@@ -18,11 +18,11 @@
     },
     "nixos": {
       "locked": {
-        "lastModified": 1689680872,
-        "narHash": "sha256-brNix2+ihJSzCiKwLafbyejrHJZUP0Fy6z5+xMOC27M=",
+        "lastModified": 1690148897,
+        "narHash": "sha256-l/j/AX1d2K79EWslwgWR2+htkzCbtjKZsS5NbWXnhz4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08700de174bc6235043cb4263b643b721d936bdb",
+        "rev": "ac1acba43b2f9db073943ff5ed883ce7e8a40a2c",
         "type": "github"
       },
       "original": {
@@ -43,11 +43,11 @@
       },
       "locked": {
         "dir": "domain",
-        "lastModified": 1689709420,
-        "narHash": "sha256-FUX4hxl00++qucSNJvBiKVWSVg8tGLzGRD1alBstdp4=",
+        "lastModified": 1690195031,
+        "narHash": "sha256-aLkFrpdFY3rmOMxD6CHCJT5E6xyEqj5saGYGN/J+KyM=",
         "owner": "pythoneda-shared-pythoneda",
         "repo": "domain-artifact",
-        "rev": "461c9136fdbfae1d004547f61609efe69538fa30",
+        "rev": "6ec6b392f92276ebfea96488a4566ceebd76d893",
         "type": "github"
       },
       "original": {
