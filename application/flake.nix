@@ -41,8 +41,8 @@
       let
         org = "pythoneda-shared-pythoneda";
         repo = "application";
-        version = "0.0.1a16";
-        sha256 = "sha256-z+uby6CRDE3Q6vYNUU3DZHNAF9bDeKPabcM9Zu9waOs=";
+        version = "0.0.1a17";
+        sha256 = "sha256-K2j7am/xKQWbevi+taOXoSlV+oLyqGCuDCcqqr/huHw=";
         pname = "${org}-${repo}";
         pkgs = import nixos { inherit system; };
         description = "Application layer for PythonEDA applications";
@@ -55,8 +55,9 @@
         nixosVersion = builtins.readFile "${nixos}/.version";
         nixpkgsRelease = "nixos-${nixosVersion}";
         shared = import "${pythoneda-shared-pythoneda-banner}/nix/shared.nix";
-        pythoneda-shared-pythoneda-application-for =
-          { python, pythoneda-shared-pythoneda-domain }:
+        pythoneda-shared-pythoneda-application-for = { python
+          , pythoneda-shared-pythoneda-banner, pythoneda-shared-pythoneda-domain
+          }:
           let
             pnameWithUnderscores =
               builtins.replaceStrings [ "-" ] [ "_" ] pname;
@@ -78,7 +79,9 @@
               inherit homepage pname pythonMajorMinorVersion pythonpackage
                 version;
               package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
-              pythonedaSharedPythonedaDomainVersion =
+              pythonedaSharedPythonedaBanner =
+                pythoneda-shared-pythoneda-banner.version;
+              pythonedaSharedPythonedaDomain =
                 pythoneda-shared-pythoneda-domain.version;
               src = pyprojectTemplateFile;
             };
@@ -91,8 +94,10 @@
             format = "pyproject";
 
             nativeBuildInputs = with python.pkgs; [ pip pkgs.jq poetry-core ];
-            propagatedBuildInputs = with python.pkgs;
-              [ pythoneda-shared-pythoneda-domain ];
+            propagatedBuildInputs = with python.pkgs; [
+              pythoneda-shared-pythoneda-banner
+              pythoneda-shared-pythoneda-domain
+            ];
 
             pythonImportsCheck = [ pythonpackage ];
 
@@ -167,18 +172,24 @@
           pythoneda-shared-pythoneda-application-python38 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python38;
+              pythoneda-shared-pythoneda-banner =
+                pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python38;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python38;
             };
           pythoneda-shared-pythoneda-application-python39 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python39;
+              pythoneda-shared-pythoneda-banner =
+                pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python39;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python39;
             };
           pythoneda-shared-pythoneda-application-python310 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python310;
+              pythoneda-shared-pythoneda-banner =
+                pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python310;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python310;
             };
