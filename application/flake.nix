@@ -41,8 +41,8 @@
       let
         org = "pythoneda-shared-pythoneda";
         repo = "application";
-        version = "0.0.1a17";
-        sha256 = "sha256-K2j7am/xKQWbevi+taOXoSlV+oLyqGCuDCcqqr/huHw=";
+        version = "0.0.1a18";
+        sha256 = "sha256-gBrQ0BNDVuyYV0fWK+tq/hKGHBqv+L8I7qPEQ3Z0LMw=";
         pname = "${org}-${repo}";
         pkgs = import nixos { inherit system; };
         description = "Application layer for PythonEDA applications";
