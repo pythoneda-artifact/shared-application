@@ -22,13 +22,13 @@
     nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     pythoneda-shared-pythoneda-banner = {
-      url = "github:pythoneda-shared-pythoneda/banner/0.0.1a12";
+      url = "github:pythoneda-shared-pythoneda/banner/0.0.1a13";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
     };
     pythoneda-shared-pythoneda-domain = {
       url =
-        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.1a32?dir=domain";
+        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.1a33?dir=domain";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-shared-pythoneda-banner.follows =
@@ -41,8 +41,8 @@
       let
         org = "pythoneda-shared-pythoneda";
         repo = "application";
-        version = "0.0.1a18";
-        sha256 = "sha256-gBrQ0BNDVuyYV0fWK+tq/hKGHBqv+L8I7qPEQ3Z0LMw=";
+        version = "0.0.1a19";
+        sha256 = "sha256-1Qf+AWTZApbDi3zBBPHjQ0eOsfeF7RrGQ7P+gBD59yY=";
         pname = "${org}-${repo}";
         pkgs = import nixos { inherit system; };
         description = "Application layer for PythonEDA applications";
