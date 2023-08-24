@@ -28,7 +28,15 @@
     };
     pythoneda-shared-pythoneda-domain = {
       url =
-        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.1a35?dir=domain";
+        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.1a37?dir=domain";
+      inputs.nixos.follows = "nixos";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.pythoneda-shared-pythoneda-banner.follows =
+        "pythoneda-shared-pythoneda-banner";
+    };
+    pythoneda-shared-pythoneda-infrastructure = {
+      url =
+        "github:pythoneda-shared-pythoneda/infrastructure-artifact/0.0.1a23?dir=infrastructure";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-shared-pythoneda-banner.follows =
@@ -41,8 +49,8 @@
       let
         org = "pythoneda-shared-pythoneda";
         repo = "application";
-        version = "0.0.1a20";
-        sha256 = "sha256-hv3842vleRDMQpwymtt4K1DgHDyewJfzyIpgOMtjf8w=";
+        version = "0.0.1a23";
+        sha256 = "sha256-zrprcCxGcWFCB204MNKwO3EGqA2Bg56AWMENQi1LumE=";
         pname = "${org}-${repo}";
         pkgs = import nixos { inherit system; };
         description = "Application layer for PythonEDA applications";
@@ -57,7 +65,7 @@
         shared = import "${pythoneda-shared-pythoneda-banner}/nix/shared.nix";
         pythoneda-shared-pythoneda-application-for = { python
           , pythoneda-shared-pythoneda-banner, pythoneda-shared-pythoneda-domain
-          }:
+          , pythoneda-shared-pythoneda-infrastructure }:
           let
             pnameWithUnderscores =
               builtins.replaceStrings [ "-" ] [ "_" ] pname;
@@ -83,6 +91,8 @@
                 pythoneda-shared-pythoneda-banner.version;
               pythonedaSharedPythonedaDomain =
                 pythoneda-shared-pythoneda-domain.version;
+              pythonedaSharedPythonedaInfrastructure =
+                pythoneda-shared-pythoneda-infrastructure.version;
               src = pyprojectTemplateFile;
             };
             src = pkgs.fetchFromGitHub {
@@ -97,6 +107,7 @@
             propagatedBuildInputs = with python.pkgs; [
               pythoneda-shared-pythoneda-banner
               pythoneda-shared-pythoneda-domain
+              pythoneda-shared-pythoneda-infrastructure
             ];
 
             pythonImportsCheck = [ pythonpackage ];
@@ -176,6 +187,8 @@
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python38;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python38;
+              pythoneda-shared-pythoneda-infrastructure =
+                pythoneda-shared-pythoneda-infrastructure.packages.${system}.pythoneda-shared-pythoneda-infrastructure-python38;
             };
           pythoneda-shared-pythoneda-application-python39 =
             pythoneda-shared-pythoneda-application-for {
@@ -184,6 +197,8 @@
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python39;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python39;
+              pythoneda-shared-pythoneda-infrastructure =
+                pythoneda-shared-pythoneda-infrastructure.packages.${system}.pythoneda-shared-pythoneda-infrastructure-python39;
             };
           pythoneda-shared-pythoneda-application-python310 =
             pythoneda-shared-pythoneda-application-for {
@@ -192,6 +207,8 @@
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python310;
               pythoneda-shared-pythoneda-domain =
                 pythoneda-shared-pythoneda-domain.packages.${system}.pythoneda-shared-pythoneda-domain-python310;
+              pythoneda-shared-pythoneda-infrastructure =
+                pythoneda-shared-pythoneda-infrastructure.packages.${system}.pythoneda-shared-pythoneda-infrastructure-python310;
             };
         };
       });
