@@ -51,8 +51,8 @@
       let
         org = "pythoneda-shared-pythoneda";
         repo = "application";
-        version = "0.0.3";
-        sha256 = "sha256-74k6zRja+cAcSgiDCFBsQS0l4rgsZ5uRk1IOVn6JY6E=";
+        version = "0.0.5";
+        sha256 = "0dwrf4cjgqdlb7yp8iqkp736m79ys83pq8xm46kr3fbdrj7iwari";
         pname = "${org}-${repo}";
         pythonpackage = "pythoneda.application";
         pkgs = import nixos { inherit system; };
@@ -64,7 +64,8 @@
         space = "D";
         layer = "A";
         nixosVersion = builtins.readFile "${nixos}/.version";
-        nixpkgsRelease = "nixos-${nixosVersion}";
+        nixpkgsRelease =
+          builtins.replaceStrings [ "\n" ] [ "" ] "nixos-${nixosVersion}";
         shared = import "${pythoneda-shared-pythoneda-banner}/nix/shared.nix";
         pythoneda-shared-pythoneda-application-for = { python
           , pythoneda-shared-pythoneda-banner, pythoneda-shared-pythoneda-domain
