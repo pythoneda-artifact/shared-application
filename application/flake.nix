@@ -21,6 +21,15 @@
   inputs = rec {
     nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
+    pythoneda-shared-artifact-shared = {
+      url = "github:pythoneda-shared-artifact/shared-artifact/0.0.1?dir=shared";
+      inputs.nixos.follows = "nixos";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.pythoneda-shared-pythoneda-banner.follows =
+        "pythoneda-shared-pythoneda-banner";
+      inputs.pythoneda-shared-pythoneda-domain.follows =
+        "pythoneda-shared-pythoneda-domain";
+    };
     pythoneda-shared-pythoneda-banner = {
       url = "github:pythoneda-shared-pythoneda/banner/0.0.13";
       inputs.nixos.follows = "nixos";
@@ -68,7 +77,8 @@
           builtins.replaceStrings [ "\n" ] [ "" ] "nixos-${nixosVersion}";
         shared = import "${pythoneda-shared-pythoneda-banner}/nix/shared.nix";
         pythoneda-shared-pythoneda-application-for = { python
-          , pythoneda-shared-pythoneda-banner, pythoneda-shared-pythoneda-domain
+          , pythoneda-shared-artifact-shared, pythoneda-shared-pythoneda-banner
+          , pythoneda-shared-pythoneda-domain
           , pythoneda-shared-pythoneda-infrastructure }:
           let
             pnameWithUnderscores =
@@ -90,6 +100,8 @@
               inherit homepage pname pythonMajorMinorVersion pythonpackage
                 version;
               package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
+              pythonedaSharedArtifactShared =
+                pythoneda-shared-artifact-shared.version;
               pythonedaSharedPythonedaBanner =
                 pythoneda-shared-pythoneda-banner.version;
               pythonedaSharedPythonedaDomain =
@@ -108,6 +120,7 @@
 
             nativeBuildInputs = with python.pkgs; [ pip pkgs.jq poetry-core ];
             propagatedBuildInputs = with python.pkgs; [
+              pythoneda-shared-artifact-shared
               pythoneda-shared-pythoneda-banner
               pythoneda-shared-pythoneda-domain
               pythoneda-shared-pythoneda-infrastructure
@@ -209,6 +222,8 @@
           pythoneda-shared-pythoneda-application-python38 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python38;
+              pythoneda-shared-artifact-shared =
+                pythoneda-shared-artifact-shared.packages.${system}.pythoneda-shared-artifact-shared-python38;
               pythoneda-shared-pythoneda-banner =
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python38;
               pythoneda-shared-pythoneda-domain =
@@ -219,6 +234,8 @@
           pythoneda-shared-pythoneda-application-python39 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python39;
+              pythoneda-shared-artifact-shared =
+                pythoneda-shared-artifact-shared.packages.${system}.pythoneda-shared-artifact-shared-python39;
               pythoneda-shared-pythoneda-banner =
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python39;
               pythoneda-shared-pythoneda-domain =
@@ -229,6 +246,8 @@
           pythoneda-shared-pythoneda-application-python310 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python310;
+              pythoneda-shared-artifact-shared =
+                pythoneda-shared-artifact-shared.packages.${system}.pythoneda-shared-artifact-shared-python310;
               pythoneda-shared-pythoneda-banner =
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python310;
               pythoneda-shared-pythoneda-domain =
@@ -239,6 +258,8 @@
           pythoneda-shared-pythoneda-application-python311 =
             pythoneda-shared-pythoneda-application-for {
               python = pkgs.python311;
+              pythoneda-shared-artifact-shared =
+                pythoneda-shared-artifact-shared.packages.${system}.pythoneda-shared-artifact-shared-python311;
               pythoneda-shared-pythoneda-banner =
                 pythoneda-shared-pythoneda-banner.packages.${system}.pythoneda-shared-pythoneda-banner-python311;
               pythoneda-shared-pythoneda-domain =
