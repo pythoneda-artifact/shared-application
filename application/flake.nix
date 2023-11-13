@@ -51,7 +51,7 @@
       inputs.pythoneda-shared-pythoneda-domain.follows =
         "pythoneda-shared-pythoneda-domain";
       url =
-        "github:pythoneda-shared-pythoneda/infrastructure-artifact/0.0.6?dir=infrastructure";
+        "github:pythoneda-shared-pythoneda/infrastructure-artifact/0.0.7?dir=infrastructure";
     };
   };
   outputs = inputs:
