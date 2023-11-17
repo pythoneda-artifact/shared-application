@@ -227,16 +227,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1699887378,
-        "narHash": "sha256-/nuQLhfvz7q/1oJw5kyTV8pjpbrva3rjkXv4c9uWJDM=",
+        "lastModified": 1699966139,
+        "narHash": "sha256-bjBBAguwdVpGDeXcjEfbOFKSMfz6I8IaA5KBbEBU5nQ=",
         "owner": "pythoneda-shared-pythoneda",
         "repo": "banner",
-        "rev": "db254a4c04e92b6ed9ac50b511baf9974cd4b588",
+        "rev": "6f9eba6ef4fcac366860f96fa0d2735f23f01f9e",
         "type": "github"
       },
       "original": {
         "owner": "pythoneda-shared-pythoneda",
-        "ref": "0.0.14",
+        "ref": "0.0.25",
         "repo": "banner",
         "type": "github"
       }
@@ -255,17 +255,17 @@
       },
       "locked": {
         "dir": "domain",
-        "lastModified": 1699554960,
-        "narHash": "sha256-66lxvOQYvP9ACBj5YgbKbLPmHSB/OWC0lNCKTK9K+YM=",
+        "lastModified": 1700209693,
+        "narHash": "sha256-gEprS4L32LLTzlf/7R65wde6j3ApJkR7KjCily6X3sU=",
         "owner": "pythoneda-shared-pythoneda",
         "repo": "domain-artifact",
-        "rev": "3cc0b2c02ed347b012410cb7c7a86f85eae98037",
+        "rev": "0f46ee6727835d44e2f65dce0070b6d90df048fe",
         "type": "github"
       },
       "original": {
         "dir": "domain",
         "owner": "pythoneda-shared-pythoneda",
-        "ref": "0.0.14",
+        "ref": "0.0.16",
         "repo": "domain-artifact",
         "type": "github"
       }
@@ -287,17 +287,17 @@
       },
       "locked": {
         "dir": "infrastructure",
-        "lastModified": 1699869471,
-        "narHash": "sha256-iZA8YYLFr7hIDXlXLoKn39kQzTg3EBbevvRHI7Y6/kI=",
+        "lastModified": 1700209840,
+        "narHash": "sha256-TGcsPSZq0Sf0Br155RJkYIhY3fB7fRUTrAaToRc9m44=",
         "owner": "pythoneda-shared-pythoneda",
         "repo": "infrastructure-artifact",
-        "rev": "7466bb0282845f922240ad075b350647f9ad7327",
+        "rev": "7e1b3e659ff9c6f0fbfa66e34fb162185da59198",
         "type": "github"
       },
       "original": {
         "dir": "infrastructure",
         "owner": "pythoneda-shared-pythoneda",
-        "ref": "0.0.7",
+        "ref": "0.0.8",
         "repo": "infrastructure-artifact",
         "type": "github"
       }
